@@ -90,6 +90,10 @@ logica      ::=  logica:izq AND
                  {:
                         RESULT = new NodoC3D(der.getCad());
                 :}
+                |PAR_IZQ logica:cond PAR_DER
+                 {:
+                        RESULT = cond;
+                :}
                 ;
 
 relacional        ::= expresion:izq operador_rel:op expresion:der
@@ -109,6 +113,7 @@ operador_rel    ::= MENOR {: RESULT="<" ; :}
                 |MENOR_IGUAL {:RESULT="<="; :}
                 |MAYOR_IGUAL {:RESULT=">="; :}
                 |IGUAL {:RESULT="=="; :}
+                |DIFERENTE {:RESULT="!=";:}
                 ;
 
 expresion   ::= expresion:izq MAS expresion:der
